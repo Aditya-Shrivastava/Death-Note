@@ -1,0 +1,71 @@
+.navbar {
+  background-color: #343a69;
+  /* background-image: linear-gradient(
+    to right,
+    rgb(137, 137, 137),
+    rgb(132, 132, 132)
+  ); */
+  top: 0;
+  position: sticky;
+}
+
+.navbar__items {
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: rgb(255, 255, 255);
+}
+
+.navbar__items > .MuiSvgIcon-root {
+  font-size: 30px;
+  transition: 200ms color ease-in;
+}
+
+.navbar__items > h1 {
+  font-size: 30px;
+  font-weight: 450;
+}
+
+.navbar__itemsIcon:hover {
+  cursor: pointer;
+  color: rgb(138, 138, 138);
+}
+
+.navbar__drawer {
+  background-color: #7e49ac;
+  height: 100vh;
+}
+
+.navbar__drawerIcon {
+  color: rgb(220, 220, 220);
+  transition: 200ms color ease-in;
+  /* margin-bottom: -10px; */
+}
+
+.navbar__drawerIcon > .MuiSvgIcon-root {
+  font-size: 30px;
+}
+
+.navbar__links {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.navbar__links > a {
+  color: rgb(220, 220, 220);
+  transition: 200ms color ease-in;
+  text-decoration: inherit;
+  cursor: pointer;
+  padding: 5px;
+  text-align: center;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.navbar__drawerIcon:hover,
+.navbar__links > a:hover {
+  color: rgb(255, 255, 255);
+  text-decoration: inherit;
+}
