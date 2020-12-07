@@ -1,19 +1,28 @@
 export const initialState = {
     categories: ["food", "music", "shoes", "series"],
-    // reminders: [
-    //     {
-    //         category: "food",
-    //         text: "remind me...."
-    //     },
-    //     {
-    //         category: "food",
-    //         text: "remind me...."
-    //     },
-    //     {
-    //         category: "food",
-    //         text: "remind me...."
-    //     }
-    // ]
+    reminders: [
+        {
+            category: "food",
+            text: "remind me...."
+        },
+        {
+            category: "food",
+            text: "remind me...."
+        },
+        {
+            category: "food",
+            text: "remind me...."
+        },
+        {
+            category: "food",
+            text: "remind me...."
+        },
+        {
+            category: "food",
+            text: "remind me...."
+        },
+    ]
+
 };
 
 const reducer = (state, action) => {

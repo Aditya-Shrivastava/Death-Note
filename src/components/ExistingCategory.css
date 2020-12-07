@@ -5,8 +5,14 @@
   border-radius: 10px;
   background-color: #7e49ac;
   cursor: pointer;
-  transition: transform 400ms;
+  transition: 0.4s ease-in;
+  transform: scale(1);
   margin: 10px;
+}
+
+.exCategory:hover {
+  transition: 0.4s ease-in-out;
+  transform: scale(1.05);
 }
 
 .exCategory__items {
@@ -32,8 +38,4 @@
   font-size: 20px;
   font-weight: 700;
   color: #dcdcdc;
-}
-
-.exCategory:hover {
-  transform: scale(1.05);
 }
