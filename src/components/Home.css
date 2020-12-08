@@ -1,4 +1,15 @@
 .home {
-  height: 100vh;
-  background-color: seagreen;
+	height: 100vh;
+	background-color: #e2f3f5;
+	display: flex;
+	justify-content: center;
+	font-family: 'Montserrat', sans-serif;
+	align-items: center;
+	color: #364f6b;
+	flex-direction: column;
+}
+
+.home-svg svg {
+	width: 420px;
+	height: 600px;
 }
