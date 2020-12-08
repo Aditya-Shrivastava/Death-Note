@@ -11,7 +11,7 @@ function Categories() {
 
     const categoriesLength = Object.keys(categories).length;
 
-    console.log("length", categoriesLength);
+    // console.log("length", categoriesLength);
 
     return (
         <div 
@@ -19,7 +19,7 @@ function Categories() {
         >
             <AddCategory />
             
-            {categories.map((category) => 
+            {categories?.map((category) => 
                 <ExistingCategory name={category} />
             )}
         </div>

@@ -5,8 +5,14 @@ import './App.css';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
 import Categories from './components/Categories'
+import Reminder from './components/Reminder';
+
+import {useStateValue} from './components/StateProvider';
 
 function App() {
+
+  const [{activeCategory}, dispatch] = useStateValue();
+
   return (
     <div className="app">
       <Switch>
@@ -17,6 +23,10 @@ function App() {
         <Route exact path="/categories">
           <Navbar title="Categories" />
           <Categories />
+        </Route>
+        <Route exact path="/reminder">
+          <Navbar title={activeCategory?.length? "Reminders": "Reminders"} />
+          <Reminder />
         </Route>
       </Switch>
     </div>
