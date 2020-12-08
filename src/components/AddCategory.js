@@ -17,7 +17,7 @@ function AddCategory() {
     const [errorName, setErrorName] = useState("category name cannot be empty");
     const [newCategory, setNewCategory] = useState("");
 
-    console.log(categories);
+    // console.log(categories);
     // console.log(newCategory);
 
     const handleOpen = () => {
@@ -26,6 +26,7 @@ function AddCategory() {
 
     const handleClose = () => {
         setOpen(false);
+        setError(false);
     };
 
     const handleChange = (e) => {
@@ -87,8 +88,8 @@ function AddCategory() {
                                 />
 
                                 <div className="dialog__buttons">
-                                    <button type="button" onClick={handleClose}>close</button>
-                                    <button type="submit" onClick={handleSubmit}>create</button>
+                                    <button style={{backgroundColor: "#fe5f55", }} type="button" onClick={handleClose}>close</button>
+                                    <button style={{backgroundColor: "#17b978", }} type="submit" onClick={handleSubmit}>create</button>
                                 </div>
                             </form>
                         </DialogContent>

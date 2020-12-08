@@ -2,7 +2,7 @@
   height: 200px;
   width: 300px;
   border-radius: 10px;
-  background-color: #7e49ac;
+  background-color: #e760bf;
   margin: 10px;
 }
 
@@ -37,6 +37,7 @@
 
 .dialog {
   width: 400px;
+  padding: 10px;
 }
 
 .dialog__buttons {
@@ -51,9 +52,13 @@
   cursor: pointer;
   border: 1px solid rgb(165, 165, 165);
   border-radius: 5%;
-  background-color: #f8f8f8;
+  /* background-color: #f8f8f8; */
   text-transform: capitalize;
-  color: #000000;
+  color: #ffffff;
+}
+
+.dialog__buttons > button:focus {
+  outline: 0 !important;
 }
 
 .dialog__buttons > button:hover {
@@ -62,4 +67,14 @@
   background-color: #f8f8f8;
   border: 1px solid #c6c6c6;
   color: #222;
+}
+
+@media (max-width: 600px) {
+  .dialog {
+    width: 300px;
+  }
+
+  .dialog__buttons {
+    justify-content: space-evenly;
+  }
 }

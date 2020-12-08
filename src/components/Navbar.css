@@ -15,7 +15,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  color: rgb(255, 255, 255);
+  color: #dcdcdc;
 }
 
 .navbar__items > .MuiSvgIcon-root {
@@ -30,7 +30,7 @@
 
 .navbar__itemsIcon:hover {
   cursor: pointer;
-  color: rgb(138, 138, 138);
+  color: rgb(255, 255, 255);
 }
 
 .navbar__drawer {
