@@ -6,6 +6,7 @@ import Navbar from './components/Navbar';
 import Home from './components/Home';
 import Categories from './components/Categories'
 import Reminder from './components/Reminder';
+import SignIn from './components/SignIn';
 
 import {useStateValue} from './components/StateProvider';
 
@@ -16,6 +17,9 @@ function App() {
   return (
     <div className="app">
       <Switch>
+        <Route exact path='/login'>
+					<SignIn />
+				</Route>
         <Route exact path="/">
           <Navbar title="Home" />
           <Home />

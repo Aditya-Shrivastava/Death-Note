@@ -34,24 +34,9 @@ function Reminder() {
     const [activeReminders, setActiveReminders] = useState([]);
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
-    const [nowDateTime, setNowDateTime] = useState("");
-
-    // console.log(reminders);
-
-    const handleDialogOpen = () => {
-        setDialogOpen(true);
-    };
-
-    const handleDialogClose = () => {
-        setDialogOpen(false);
-    };
-
-    const todayTime = () => {
-        // set current date and time to provide in maui datetime
-        // setNowDateTime()
-    };
-
-    // console.log(nowDateTime);
+    const [date, setDate] = useState("");
+    const [time, setTime] = useState("");
+    const [error, setError] = useState(false);
 
     useEffect(() => {
         const filterReminders = () => {
@@ -65,20 +50,69 @@ function Reminder() {
         }
 
         filterReminders();
-        todayTime();
-    }, [])
+    }, [reminders]);
 
-    console.log(activeReminders);
+    // console.log(activeReminders);
+
+    // console.log(reminders);
+
+    const handleDialogOpen = () => {
+        setDialogOpen(true);
+    };
+
+    const handleDialogClose = () => {
+        setDialogOpen(false);
+    };
+
+    // Date format reminder match 
+    // console.log(new Date().toLocaleString())
+
+    const handleDateTime = (e) => {
+        setError(false); 
+
+        const item = e.target.value;
+
+        // 2020-12-12T17:08
+        // console.log(item.slice(0, 10));
+        // console.log(item.slice(11, 16));
+
+        setDate(item.slice(0, 10));
+        setTime(item.slice(11, 16));
+    };
+
+    // console.log(Math.floor(Math.random() * 10000) + Math.floor(Math.random() * 1000));
 
     const handleReminderSubmit = (e) => {
         e.preventDefault();
 
-        console.log("Title>>>", title);
-        console.log("Desc>>>", description);
+        var randomId = Math.floor(Math.random() * 10000) + Math.floor(Math.random() * 1000);
 
-        setTitle("");
-        setDescription("");
-        setDialogOpen(false);
+        var tempState = {
+            category: activeCategory,
+            id: randomId,
+            title: title,
+            text: description,
+            time: time,
+            date: date
+        }
+
+        // console.log("Add Reminder >>>", tempState);
+
+        if ((title.length == 0) || (date.length == 0) || (time.length == 0)) {
+            setError(true); 
+        } else {
+
+            dispatch({
+                type: 'ADD_REMINDER',
+                payload: tempState
+            })
+            
+            setTitle("");
+            setDescription("");
+            setDate("");
+            setTime("");
+            setDialogOpen(false);
+        }
     };
 
     // console.log("Dialog Open >>>>", dialogOpen);
@@ -102,7 +136,8 @@ function Reminder() {
                                 <DialogContent>
                                     <form onSubmit={handleReminderSubmit}>
                                         <TextField 
-                                            helperText={null}
+                                            error={error? title.length > 0 ? false : true : false}
+                                            helperText={error? title.length > 0 ? null : "please add a title" : null}
                                             autoFocus
                                             margin="dense"
                                             label="Title"
@@ -110,11 +145,13 @@ function Reminder() {
                                             fullWidth
                                             className={classes.textField}
                                             value={title}
-                                            onChange={(e) => setTitle(e.target.value)}
+                                            onChange={(e) => {
+                                                setTitle(e.target.value)
+                                                setError(false); 
+                                            }}
                                         />
 
                                         <TextField 
-                                            helperText={null}
                                             autoFocus
                                             margin="dense"
                                             label="Description"
@@ -126,6 +163,8 @@ function Reminder() {
                                         />
 
                                         <TextField
+                                            error={error? date.length > 0 ? false : true : false}
+                                            helperText={error? date.length > 0 ? null : "please select date and time" : null}
                                             id="datetime-local"
                                             label="Set Date and Time"
                                             type="datetime-local"
@@ -134,7 +173,7 @@ function Reminder() {
                                             InputLabelProps={{
                                                 shrink: true,
                                             }}
-                                            onChange={(e) => console.log(e.target.value)}
+                                            onChange={handleDateTime}
                                         />
 
                                         <div className="reminder__dialogButtons">
@@ -161,21 +200,32 @@ function Reminder() {
 
                         
                         <div className="reminder__buttons">
-                        <Tooltip title="Go To Categories" placement="right-end">
+                            <Tooltip title="Go To Categories" placement="right-end">
+                                <KeyboardReturnIcon 
+                                    style={{color: "#3a3d44",}} 
+                                    className="reminder__buttons--hover"
+                                    onClick={() => history.push('/categories')} 
+                                />
+                            </Tooltip>
+                            <Tooltip title="Delete This Category" placement="left-end">
+                                <DeleteIcon 
+                                    style={{color: "#3a3d44", }} 
+                                    className="reminder__buttons--hover"
+                                />
+                            </Tooltip>
+                        </div>
+                    </div>
+                ) : (
+                    <>
+                    <h1>No Category Selected</h1>
+
+                    <Tooltip title="Go To Categories" placement="right-end">
                             <KeyboardReturnIcon 
                                 style={{color: "#3a3d44", }} 
                                 onClick={() => history.push('/categories')} 
                             />
-                        </Tooltip>
-                        <Tooltip title="Delete This Category" placement="left-end">
-                            <DeleteIcon 
-                                style={{color: "#3a3d44", }} 
-                            />
-                        </Tooltip>
-                        </div>
-                    </div>
-                ) : (
-                    <h1>No Category Selected</h1>
+                    </Tooltip>
+                    </>
                 )
             }
                

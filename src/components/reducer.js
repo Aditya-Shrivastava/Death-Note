@@ -1,70 +1,15 @@
 export const initialState = {
-    categories: ["food", "music", "shoes", "series"],
+    // categories: ["food", "music", "shoes", "series"],
+    categories: [],
     reminders: [
-        {
-            category: "food",
-            id: 1,
-            title: "Sunday Lunch",
-            text: "On KFCOn KFCOn KFCOn KFCOn KFCOn KFCOn KFCOn KFCOn KFCOn KFCOn KFCOn KFCOn KFCOn KFCOn KFCOn KFCOn KFCOn KFCOn KFCOn KFC",
-            time: "11:30",
-            date: "10-08-2020"
-        },
-        {
-            category: "food",
-            id: 2,
-            title: "Sunday Lunch",
-            text: "On KFC",
-            time: "11:30",
-            date: "10-08-2020"
-        },
-        {
-            category: "food",
-            id: 3,
-            title: "Sunday Lunch",
-            text: "On KFC",
-            time: "11:30",
-            date: "10-08-2020"
-        },
-        {
-            category: "food",
-            id: 4,
-            title: "Sunday Lunch",
-            text: "On KFC",
-            time: "11:30",
-            date: "10-08-2020"
-        },
-        {
-            category: "food",
-            id: 5,
-            title: "Sunday Lunch",
-            text: "On KFC wewe wewe wewe wew we wewe wewe we we we we we . we w we we ",
-            time: "11:30",
-            date: "10-08-2020"
-        },
-        {
-            category: "food",
-            id: 6,
-            title: "Sunday Lunch",
-            text: "On KFC",
-            time: "11:30",
-            date: "10-08-2020"
-        },
-        {
-            category: "food",
-            id: 7,
-            title: "Sunday Lunch",
-            text: "On KFC",
-            time: "11:30",
-            date: "10-08-2020"
-        },
-        {
-            category: "food",
-            id: 8,
-            title: "Sunday Lunch",
-            text: "On KFC",
-            time: "11:30",
-            date: "10-08-2020"
-        },
+        // {
+        //     category: "food",
+        //     id: 1,
+        //     title: "sunday lunch",
+        //     text: "on kfc",
+        //     time: "11:30",
+        //     date: "10-08-2020"
+        // },
     ],
     activeCategory: ""
 
@@ -90,6 +35,12 @@ const reducer = (state, action) => {
                 activeCategory: action.payload
             }
         
+        case 'ADD_REMINDER':
+            return {
+                ...state,
+                reminders: [action.payload, ...state.reminders]
+            }
+            
         default:
             return state;
     }
