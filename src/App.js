@@ -13,7 +13,6 @@ import { useStateValue } from './components/StateProvider';
 function App() {
 	const [{ activeCategory }, dispatch] = useStateValue();
 
-<<<<<<< HEAD
 	return (
 		<div className='app'>
 			<Switch>
@@ -39,31 +38,6 @@ function App() {
 			</Switch>
 		</div>
 	);
-=======
-  const [{activeCategory}, dispatch] = useStateValue();
-
-  return (
-    <div className="app">
-      <Switch>
-        <Route exact path='/login'>
-					<SignIn />
-				</Route>
-        <Route exact path="/">
-          <Navbar title="Home" />
-          <Home />
-        </Route>
-        <Route exact path="/categories">
-          <Navbar title="Categories" />
-          <Categories />
-        </Route>
-        <Route exact path="/reminder">
-          <Navbar title={activeCategory?.length? "Reminders": "Reminders"} />
-          <Reminder />
-        </Route>
-      </Switch>
-    </div>
-  );
->>>>>>> upstream/master
 }
 
 export default App;
