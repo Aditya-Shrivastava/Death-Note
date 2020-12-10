@@ -194,6 +194,8 @@ function Reminder() {
                                     text = {reminder.text}
                                     time = {reminder.time}
                                     date = {reminder.date}
+                                    openDialog={handleDialogOpen}
+                                    // pass delete
                                 />
                             ))}
                         </div>

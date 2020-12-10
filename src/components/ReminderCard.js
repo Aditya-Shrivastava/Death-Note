@@ -8,7 +8,12 @@ import { Tooltip } from '@material-ui/core';
 
 import TextTruncate from "react-text-truncate";
 
-function ReminderCard({title, text, time, date}) {
+function ReminderCard({title, text, time, date, openDialog}) {
+
+    const handleEdit = () => {
+        openDialog();
+    };
+
     return (
         <div className="card">
             <div className="card__left">
@@ -31,10 +36,18 @@ function ReminderCard({title, text, time, date}) {
 
                 <div className="card__rightIcons">
                 <Tooltip title="Delete Reminder" placement="left-end">
-                    <DeleteIcon style={{color: "#e53935", }} className="card__rightIcons--hover"/>
+                    <DeleteIcon 
+                        style={{color: "#e53935", }} 
+                        className="card__rightIcons--hover"
+                        onClick={() => alert("Reminder Deleted")}
+                    />
                 </Tooltip>
                 <Tooltip title="Edit Reminder" placement="right-end">
-                    <EditIcon style={{color: "#0d8549", }} className="card__rightIcons--hover"/>
+                    <EditIcon 
+                        style={{color: "#0d8549", }} 
+                        className="card__rightIcons--hover"
+                        onClick={handleEdit}
+                    />
                 </Tooltip>
                     
                     

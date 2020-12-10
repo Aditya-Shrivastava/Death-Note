@@ -15,6 +15,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import { Link } from 'react-router-dom';
+import { Avatar } from '@material-ui/core';
 
 const drawerWidth = 170;
 
@@ -118,10 +119,20 @@ function Navbar({title}) {
                       </div>
                     </IconButton>
                 </div>
+
+                <div className="navbar__user">
+                  <Avatar />
+                  <p>Rohan</p>
+                </div>
                 
                 <div className="navbar__links" onClick={handleDrawerClose}>
                   <Link to='/'>Home</Link>
                   <Link to='/categories'>Categories</Link>
+                  <Link to='/reminder'>Reminders</Link>
+                </div>
+
+                <div className="navbar__logout">
+                  <button><h3>Log out</h3></button>
                 </div>
               </div>
             </Drawer>
