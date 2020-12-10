@@ -83,7 +83,7 @@
 }
 
 .reminder__cards {
-  height: 360px;
+  max-height: 360px;
   width: 80%;
   border-radius: 5px;
   padding: 10px;
@@ -98,6 +98,7 @@
 
 .reminder__noCards {
   background-color: rgb(221, 221, 221) !important;
+  height: 200px;
 }
 
 .reminder__buttons {
@@ -112,6 +113,11 @@
 
 .reminder__buttons > .MuiSvgIcon-root {
   font-size: 40px;
+}
+
+.reminder__buttons--hover:hover {
+  color: rgb(32, 32, 32) !important;
+  transition: 0.4s ease-in-out;
 }
 
 @media (max-width: 700px) {

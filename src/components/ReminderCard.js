@@ -4,20 +4,28 @@ import './ReminderCard.css';
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 
+import { Tooltip } from '@material-ui/core';
+
 import TextTruncate from "react-text-truncate";
 
-function ReminderCard({title, text, time, date}) {
+function ReminderCard({title, text, time, date, openDialog}) {
+
+    const handleEdit = () => {
+        openDialog();
+    };
+
     return (
         <div className="card">
             <div className="card__left">
                 <h1>{title}</h1>
-                <TextTruncate 
+                {/* <TextTruncate 
                     line={1}
                     element="p"
-                    truncateText="  ...read more"
+                    truncateText="  ..."
                     text={text}
-                />
-                {/* <p>{text}</p> */}
+                    textTruncateChild={<a href="#">Read more</a>}
+                /> */}
+                <p>{text}</p>
             </div>
             
             <div className="card__right">
@@ -27,8 +35,22 @@ function ReminderCard({title, text, time, date}) {
                 </div>
 
                 <div className="card__rightIcons">
-                    <DeleteIcon />
-                    <EditIcon />
+                <Tooltip title="Delete Reminder" placement="left-end">
+                    <DeleteIcon 
+                        style={{color: "#e53935", }} 
+                        className="card__rightIcons--hover"
+                        onClick={() => alert("Reminder Deleted")}
+                    />
+                </Tooltip>
+                <Tooltip title="Edit Reminder" placement="right-end">
+                    <EditIcon 
+                        style={{color: "#0d8549", }} 
+                        className="card__rightIcons--hover"
+                        onClick={handleEdit}
+                    />
+                </Tooltip>
+                    
+                    
                 </div>
             </div>  
         </div>

@@ -3,13 +3,18 @@ import { useHistory } from 'react-router-dom';
 import './SignIn.css';
 import { FaGoogle } from 'react-icons/fa';
 
+<<<<<<< HEAD
 import { Firebase } from '../Firebase';
+=======
+// import { Firebase } from '../Firebase';
+>>>>>>> upstream/master
 
 const SignIn = () => {
 	const history = useHistory();
 
 	const handleClick = (e) => {
 		e.preventDefault();
+<<<<<<< HEAD
 		var provider = new Firebase.auth.GoogleAuthProvider();
 
 		Firebase.auth()
@@ -27,6 +32,26 @@ const SignIn = () => {
 			.catch((err) => {
 				console.log(err.code, err.message, err.email, err.credential);
 			});
+=======
+		
+		// var provider = new Firebase.auth.GoogleAuthProvider();
+
+		// Firebase.auth()
+		// 	.signInWithPopup(provider)
+		// 	.then(async (result) => {
+		// 		var user = result.user;
+		// 		var token = result.credential.accessToken;
+
+		// 		localStorage.setItem('TOKEN', token);
+		// 		localStorage.setItem('ID', user.uid);
+		// 		localStorage.setItem('DISPLAY_NAME', user.displayName);
+		// 		localStorage.setItem('PHOTO_URL', user.photoURL);
+		// 		history.push('/');
+		// 	})
+		// 	.catch((err) => {
+		// 		console.log(err.code, err.message, err.email, err.credential);
+		// 	});
+>>>>>>> upstream/master
 	};
 
 	return (
@@ -157,4 +182,8 @@ const SignIn = () => {
 	);
 };
 
+<<<<<<< HEAD
 export default SignIn;
+=======
+export default SignIn;
+>>>>>>> upstream/master
