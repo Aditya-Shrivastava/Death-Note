@@ -1,0 +1,94 @@
+.reminder-svg {
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	font-family: 'Montserrat', sans-serif;
+	color: #364f6b;
+}
+
+.reminder-svg svg {
+	width: 420px;
+	height: 600px;
+	margin-left: 8rem;
+}
+
+#card1 {
+	animation: card 2.5s ease-in-out 0s infinite;
+}
+
+#card2 {
+	animation: card 2s ease-in-out 0s infinite;
+}
+
+#card3 {
+	animation: card 3s ease-in-out 0s infinite;
+}
+
+#person1 {
+	animation: person1 3s ease-in-out 0s alternate infinite;
+}
+
+@keyframes person1 {
+	from {
+		transform: translateY(-1%);
+	}
+	to {
+		transform: translateY(0%);
+	}
+}
+
+#circle1,
+#circle2 {
+	animation: circle 2s ease-in-out 0s alternate infinite;
+}
+
+#right-arm {
+	animation: right-arm 2s ease-in-out 0s alternate infinite;
+}
+
+@keyframes card {
+	from {
+		transform: translateY(-50%);
+		opacity: 0;
+	}
+	to {
+		transform: translateY(100%);
+	}
+}
+
+@keyframes right-arm {
+	from {
+		transform: translateY(-1%);
+		transform: rotate(1deg);
+	}
+	to {
+		transform: translateY(0%);
+	}
+}
+
+@keyframes circle {
+	0% {
+		fill: #22d1ee;
+	}
+	50% {
+		fill: #17b978;
+	}
+	100% {
+		fill: #e94584;
+	}
+}
+
+#person {
+	animation: person 0.9s ease-in-out 0s alternate infinite;
+}
+
+@keyframes person {
+	from {
+		transform: translateY(-0.7%);
+	}
+	to {
+		transform: translateY(0%);
+	}
+}
