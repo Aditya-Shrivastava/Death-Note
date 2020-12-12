@@ -6,15 +6,16 @@ import { FaGoogle } from 'react-icons/fa';
 import { Firebase } from '../Firebase';
 
 const SignIn = () => {
+	const db = Firebase.firestore();
 	const history = useHistory();
 
-	const handleClick = (e) => {
+	const handleClick = async (e) => {
 		e.preventDefault();
 		var provider = new Firebase.auth.GoogleAuthProvider();
 
 		Firebase.auth()
 			.signInWithPopup(provider)
-			.then(async (result) => {
+			.then((result) => {
 				var user = result.user;
 				var token = result.credential.accessToken;
 
@@ -22,7 +23,30 @@ const SignIn = () => {
 				localStorage.setItem('ID', user.uid);
 				localStorage.setItem('DISPLAY_NAME', user.displayName);
 				localStorage.setItem('PHOTO_URL', user.photoURL);
-				history.push('/');
+
+				const userData = {
+					userName: user.displayName,
+					imageUrl: user.photoURL,
+					email: user.email,
+					categories: [],
+				};
+
+				db.doc(`/users/${user.uid}`)
+					.get()
+					.then((doc) => {
+						if (doc.exists) {
+							console.log('User Already Registered');
+							history.push('/');
+						} else {
+							db.doc(`/users/${user.uid}`).set(userData);
+							console.log('User Registered Successfully');
+							history.push('/');
+						}
+					})
+					.catch((err) => {
+						console.error(err);
+						history.push('/login');
+					});
 			})
 			.catch((err) => {
 				console.log(err.code, err.message, err.email, err.credential);
